@@ -13,13 +13,32 @@ display:none;
 margin-top:25px;
 padding:30px;
 border-radius:20px;
-max-width:750px;
+max-width:800px;
 margin:auto;
 color:white;
 background:rgba(255,255,255,0.15);
 backdrop-filter:blur(10px);
 border:1px solid rgba(255,255,255,0.3);
 box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+.gallery{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.machine-img{
+width:100%;
+max-width:250px;
+margin:10px;
+border-radius:15px;
+box-shadow:0 5px 15px rgba(0,0,0,0.5);
+}
+
+.machine-img:hover{
+transform:scale(1.05);
+transition:0.3s;
 }
 
 </style>
@@ -45,13 +64,15 @@ box-shadow:0 10px 25px rgba(0,0,0,0.5);
 
 <button id="btnBenefits" onclick="showBenefits()">Benefits For Farmers</button>
 
+<button id="btnPhotos" onclick="showPhotos()">Machine Photos</button>
+
 </div>
 
 <div class="info-box" id="infoBox">
 
 <h2 id="infoTitle"></h2>
 
-<p id="infoText"></p>
+<div id="infoText"></div>
 
 </div>
 
@@ -74,8 +95,11 @@ const intro=document.getElementById("btnIntro");
 const features=document.getElementById("btnFeatures");
 const works=document.getElementById("btnWorks");
 const benefits=document.getElementById("btnBenefits");
+const photos=document.getElementById("btnPhotos");
 
 const back=document.getElementById("mainBack");
+
+/* -------- LANGUAGE SET -------- */
 
 if(lang==="marathi"){
 
@@ -85,6 +109,7 @@ intro.innerText="मशीन परिचय";
 features.innerText="मशीन वैशिष्ट्ये";
 works.innerText="मशीन कशी काम करते";
 benefits.innerText="शेतकऱ्यांसाठी फायदे";
+photos.innerText="मशीन फोटो";
 
 back.innerText="मेनू वर जा";
 
@@ -98,6 +123,7 @@ intro.innerText="मशीन परिचय";
 features.innerText="मशीन की विशेषताएँ";
 works.innerText="मशीन कैसे काम करती है";
 benefits.innerText="किसानों के लिए लाभ";
+photos.innerText="मशीन के फोटो";
 
 back.innerText="मेनू पर जाएँ";
 
@@ -105,152 +131,105 @@ back.innerText="मेनू पर जाएँ";
 
 }
 
-
+/* -------- FUNCTIONS -------- */
 
 function showIntro(){
-
 document.getElementById("infoBox").style.display="block";
 
 if(lang==="marathi"){
-
-document.getElementById("infoTitle").innerText="मशीन परिचय";
-
-document.getElementById("infoText").innerText=
-"ही मशीन भाज्यांची लागवड स्वयंचलितपणे करण्यासाठी तयार केलेली मल्टी व्हेजिटेबल ट्रान्सप्लांटर मशीन आहे.";
-
+setData("मशीन परिचय","ही मशीन भाज्यांची स्वयंचलित लागवड करते.");
 }
-
 else if(lang==="hindi"){
-
-document.getElementById("infoTitle").innerText="मशीन परिचय";
-
-document.getElementById("infoText").innerText=
-"यह मशीन सब्जियों की रोपाई को स्वचालित बनाने के लिए बनाई गई मल्टी वेजिटेबल ट्रांसप्लांटर मशीन है।";
-
+setData("मशीन परिचय","यह मशीन सब्जियों की स्वचालित रोपाई करती है।");
 }
-
 else{
-
-document.getElementById("infoTitle").innerText="Machine Introduction";
-
-document.getElementById("infoText").innerText=
-"Our machine is a multi-vegetable transplanter designed to automate vegetable plantation.";
-
+setData("Machine Introduction","This machine is a multi vegetable transplanter.");
 }
-
 }
-
-
 
 function showFeatures(){
-
 document.getElementById("infoBox").style.display="block";
 
 if(lang==="marathi"){
-
-document.getElementById("infoTitle").innerText="मशीन वैशिष्ट्ये";
-
-document.getElementById("infoText").innerText=
-"ही मशीन टोमॅटो, वांगी यांसारख्या अनेक पिकांची लागवड करू शकते आणि रोबोटिक पिक-अँड-प्लेस प्रणाली वापरते.";
-
+setData("मशीन वैशिष्ट्ये","रोबोटिक आर्म, कन्व्हेयर सिस्टीम आणि बॅटरी सिस्टम आहे.");
 }
-
 else if(lang==="hindi"){
-
-document.getElementById("infoTitle").innerText="मशीन की विशेषताएँ";
-
-document.getElementById("infoText").innerText=
-"यह मशीन टमाटर, बैंगन जैसे कई फसलों की रोपाई कर सकती है और रोबोटिक पिक एंड प्लेस प्रणाली का उपयोग करती है।";
-
+setData("मशीन की विशेषताएँ","रोबोटिक आर्म और कन्वेयर सिस्टम शामिल है।");
 }
-
 else{
-
-document.getElementById("infoTitle").innerText="Machine Features";
-
-document.getElementById("infoText").innerText=
-"Multi crop transplanting, robotic pick and place arm, automated conveyor system and electronic control.";
-
+setData("Machine Features","Robotic arm, conveyor system and battery system.");
 }
-
 }
-
-
 
 function showWorks(){
-
 document.getElementById("infoBox").style.display="block";
 
 if(lang==="marathi"){
-
-document.getElementById("infoTitle").innerText="मशीन कशी काम करते";
-
-document.getElementById("infoText").innerText=
-"ट्रे कन्व्हेयर रोपे पुढे आणतो, रोबोटिक आर्म रोपे उचलतो आणि तयार केलेल्या खड्ड्यांमध्ये टाकतो.";
-
+setData("मशीन कशी काम करते","कन्व्हेयर रोपे पुढे आणतो आणि रोबोटिक आर्म लागवड करतो.");
 }
-
 else if(lang==="hindi"){
-
-document.getElementById("infoTitle").innerText="मशीन कैसे काम करती है";
-
-document.getElementById("infoText").innerText=
-"कन्वेयर ट्रे पौधों को आगे लाता है और रोबोटिक आर्म उन्हें मिट्टी के गड्ढों में डालता है।";
-
+setData("मशीन कैसे काम करती है","कन्वेयर पौधों को आगे लाता है और रोबोटिक आर्म रोपाई करता है।");
 }
-
 else{
-
-document.getElementById("infoTitle").innerText="How It Works";
-
-document.getElementById("infoText").innerText=
-"The conveyor moves trays, robotic arm picks saplings and drops them into soil holes.";
-
+setData("How It Works","Conveyor moves trays and robotic arm plants saplings.");
 }
-
 }
-
-
 
 function showBenefits(){
+document.getElementById("infoBox").style.display="block";
+
+if(lang==="marathi"){
+setData("शेतकऱ्यांसाठी फायदे","मजुरी कमी होते आणि उत्पादन वाढते.");
+}
+else if(lang==="hindi"){
+setData("किसानों के लिए लाभ","यह मशीन श्रम कम करती है और उत्पादन बढ़ाती है।");
+}
+else{
+setData("Benefits For Farmers","Reduces labour and increases productivity.");
+}
+}
+
+/* -------- PHOTOS -------- */
+
+function showPhotos(){
 
 document.getElementById("infoBox").style.display="block";
 
 if(lang==="marathi"){
-
-document.getElementById("infoTitle").innerText="शेतकऱ्यांसाठी फायदे";
-
-document.getElementById("infoText").innerText=
-"ही मशीन मजुरी कमी करते, लागवडीचा वेग वाढवते आणि शेतीची उत्पादकता वाढवते.";
-
+setPhotos("मशीन फोटो");
 }
-
 else if(lang==="hindi"){
-
-document.getElementById("infoTitle").innerText="किसानों के लिए लाभ";
-
-document.getElementById("infoText").innerText=
-"यह मशीन श्रम कम करती है, रोपाई की गति बढ़ाती है और खेती की उत्पादकता बढ़ाती है।";
-
+setPhotos("मशीन के फोटो");
 }
-
 else{
-
-document.getElementById("infoTitle").innerText="Benefits For Farmers";
-
-document.getElementById("infoText").innerText=
-"Reduces labour requirement, increases planting speed and improves productivity.";
-
+setPhotos("Machine Photos");
 }
 
 }
 
+/* -------- HELPER FUNCTIONS -------- */
 
+function setData(title,text){
+document.getElementById("infoTitle").innerText=title;
+document.getElementById("infoText").innerText=text;
+}
+
+function setPhotos(title){
+document.getElementById("infoTitle").innerText=title;
+
+document.getElementById("infoText").innerHTML=`
+
+<div class="gallery">
+<img src="images/machine1.jpg" class="machine-img">
+<img src="images/machine2.jpg" class="machine-img">
+<img src="images/machine3.jpg" class="machine-img">
+</div>
+
+`;
+}
 
 function goBack(){
-
 window.location.href="menu.html";
-
 }
 
 </script>
