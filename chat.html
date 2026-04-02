@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Chatbot</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.chat-box{
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
+padding:20px;
+border-radius:15px;
+max-width:550px;
+margin:auto;
+color:white;
+}
+
+#chatLog{
+height:280px;
+overflow-y:auto;
+border:1px solid rgba(255,255,255,0.4);
+padding:10px;
+margin-bottom:10px;
+}
+
+#chatLog p{
+background:rgba(255,255,255,0.2);
+padding:8px;
+border-radius:10px;
+margin:5px 0;
+}
+
+input{
+width:65%;
+padding:10px;
+border-radius:10px;
+border:none;
+}
+
+.send-btn{
+padding:10px 15px;
+border:none;
+border-radius:10px;
+background:#1f6f43;
+color:white;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="hero">
+<div class="overlay"></div>
+
+<div class="content">
+
+<h1 id="title">Ask Your Question</h1>
+
+<div class="chat-box">
+
+<div id="chatLog"></div>
+
+<input type="text" id="userInput" placeholder="Type your question">
+
+<button class="send-btn" onclick="sendMessage()" id="sendBtn">Send</button>
+
+</div>
+
+<br>
+
+<button class="back-btn" onclick="goBack()" id="backBtn">Back</button>
+
+</div>
+</div>
+
+<script>
+
+let lang = localStorage.getItem("lang") || "english";
+
+window.onload=function(){
+
+const title=document.getElementById("title");
+const send=document.getElementById("sendBtn");
+const back=document.getElementById("backBtn");
+const input=document.getElementById("userInput");
+
+if(lang==="marathi"){
+title.innerText="प्रश्न विचारा";
+send.innerText="पाठवा";
+back.innerText="मागे जा";
+input.placeholder="तुमचा प्रश्न लिहा";
+}
+
+else if(lang==="hindi"){
+title.innerText="सवाल पूछें";
+send.innerText="भेजें";
+back.innerText="वापस जाएँ";
+input.placeholder="अपना सवाल लिखें";
+}
+
+}
+
+function sendMessage(){
+
+const input=document.getElementById("userInput");
+const chat=document.getElementById("chatLog");
+
+let msg=input.value.toLowerCase();
+if(msg==="") return;
+
+chat.innerHTML+=`<p><b>You:</b> ${msg}</p>`;
+
+let reply="";
+
+/* -------- SMART DATASET -------- */
+
+if(msg.includes("machine") || msg.includes("what is")){
+replyLang(
+" This machine is a multi vegetable transplanter used to plant saplings automatically.",
+"ही मशीन मल्टी व्हेजिटेबल ट्रान्सप्लांटर आहे जी स्वयंचलित लागवड करते.",
+"यह मशीन मल्टी वेजिटेबल ट्रांसप्लांटर है जो स्वचालित रोपाई करती है।"
+);
+}
+
+else if(msg.includes("work") || msg.includes("how")){
+replyLang(
+"The conveyor moves trays and robotic arm places saplings into soil holes.",
+"कन्व्हेयर रोपे पुढे आणतो आणि रोबोटिक आर्म ती मातीमध्ये टाकतो.",
+"कन्वेयर पौधों को आगे लाता है और रोबोटिक आर्म उन्हें मिट्टी में डालता है।"
+);
+}
+
+else if(msg.includes("feature")){
+replyLang(
+"It has robotic arm, conveyor system, hole maker and battery system.",
+"यात रोबोटिक आर्म, कन्व्हेयर सिस्टीम आणि बॅटरी सिस्टीम आहे.",
+"इसमें रोबोटिक आर्म और कन्वेयर सिस्टम है।"
+);
+}
+
+else if(msg.includes("benefit")){
+replyLang(
+"It reduces labour and increases efficiency.",
+"ही मशीन मजुरी कमी करते आणि उत्पादन वाढवते.",
+"यह मशीन श्रम कम करती है और उत्पादन बढ़ाती है।"
+);
+}
+
+else if(msg.includes("crop")){
+replyLang(
+"It can plant tomato, brinjal and other vegetables.",
+"ही मशीन टोमॅटो, वांगी यांसारखी पिके लावते.",
+"यह मशीन टमाटर और बैंगन जैसी फसलें लगा सकती है।"
+);
+}
+
+else if(msg.includes("battery")){
+replyLang(
+"It runs on 12V EXIDE battery.",
+"ही मशीन 12V बॅटरीवर चालते.",
+"यह मशीन 12V बैटरी पर चलती है।"
+);
+}
+
+else if(msg.includes("arduino") || msg.includes("controller")){
+replyLang(
+"It uses Arduino Mega controllers.",
+"यात Arduino Mega कंट्रोलर वापरला आहे.",
+"इसमें Arduino Mega कंट्रोलर उपयोग किया गया है।"
+);
+}
+
+else if(msg.includes("automatic")){
+replyLang(
+"Yes, it is semi-automatic machine.",
+"ही अर्ध-स्वयंचलित मशीन आहे.",
+"यह अर्ध-स्वचालित मशीन है।"
+);
+}
+
+else if(msg.includes("cost") || msg.includes("price")){
+replyLang(
+"The cost depends on design and components.",
+"किंमत डिझाइनवर अवलंबून असते.",
+"कीमत डिजाइन पर निर्भर करती है।"
+);
+}
+
+else if(msg.includes("farmer")){
+replyLang(
+"It helps farmers save time and labour.",
+"शेतकऱ्यांना वेळ आणि मजुरी वाचते.",
+"यह किसानों का समय और श्रम बचाती है।"
+);
+}
+
+else{
+replyLang(
+"Please ask machine related questions.",
+"कृपया मशीन संबंधित प्रश्न विचारा.",
+"कृपया मशीन से संबंधित सवाल पूछें।"
+);
+}
+
+/* -------- FUNCTION -------- */
+
+function replyLang(en, mr, hi){
+if(lang==="marathi") reply=mr;
+else if(lang==="hindi") reply=hi;
+else reply=en;
+}
+
+chat.innerHTML+=`<p><b>Bot:</b> ${reply}</p>`;
+chat.scrollTop=chat.scrollHeight;
+input.value="";
+}
+
+function goBack(){
+window.location.href="menu.html";
+}
+
+</script>
+
+</body>
+</html>

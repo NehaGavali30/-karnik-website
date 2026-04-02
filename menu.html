@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="hero">
+<div class="overlay"></div>
+
+<div class="content">
+
+<h1 id="title">Menu</h1>
+
+<div class="menu-buttons">
+
+<button id="aboutBtn" onclick="goAbout()">About Machine</button>
+
+<button id="chatBtn" onclick="goChat()">Ask Question</button>
+
+<button id="contactBtn" onclick="goContact()">Contact Us</button>
+
+</div>
+
+<br>
+
+<button class="back-btn" id="homeBtn" onclick="goHome()">Back</button>
+
+</div>
+</div>
+
+<script>
+
+let lang = localStorage.getItem("lang") || "english";
+
+window.onload = function(){
+
+const title = document.getElementById("title");
+const about = document.getElementById("aboutBtn");
+const chat = document.getElementById("chatBtn");
+const contact = document.getElementById("contactBtn");
+const home = document.getElementById("homeBtn");
+
+
+if(lang === "marathi"){
+
+title.innerText = "मेनू";
+
+about.innerText = "मशीन बद्दल";
+
+chat.innerText = "प्रश्न विचारा";
+
+contact.innerText = "संपर्क करा";
+
+home.innerText = "मुख्य पृष्ठ";
+
+}
+
+else if(lang === "hindi"){
+
+title.innerText = "मेनू";
+
+about.innerText = "मशीन के बारे में";
+
+chat.innerText = "सवाल पूछें";
+
+contact.innerText = "संपर्क करें";
+
+home.innerText = "होम पेज";
+
+}
+
+else{
+
+title.innerText = "Menu";
+
+about.innerText = "About Machine";
+
+chat.innerText = "Ask Question";
+
+contact.innerText = "Contact Us";
+
+home.innerText = "Back to Home";
+
+}
+
+}
+
+
+
+/* Navigation */
+
+function goAbout(){
+
+window.location.href = "about.html";
+
+}
+
+function goChat(){
+
+window.location.href = "chat.html";
+
+}
+
+function goContact(){
+
+window.location.href = "contact.html";
+
+}
+
+function goHome(){
+
+window.location.href = "index.html";
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team Karnik</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="hero">
+<div class="overlay"></div>
+
+<div class="content">
+
+<img src="karnik-logo.jpg" class="logo">
+
+<h1>TEAM KARNIK</h1>
+<p>Smart Agriculture Innovation</p>
+
+<div class="buttons">
+<button onclick="selectLang('marathi')">मराठी</button>
+<button onclick="selectLang('english')">English</button>
+<button onclick="selectLang('hindi')">हिंदी</button>
+</div>
+
+</div>
+</div>
+
+<script>
+function selectLang(lang){
+localStorage.setItem("lang",lang);
+window.location.href="menu.html";
+}
+</script>
+
+</body>
+</html>

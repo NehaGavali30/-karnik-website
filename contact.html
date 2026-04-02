@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.contact-box{
+padding:30px;
+border-radius:20px;
+max-width:500px;
+margin:auto;
+text-align:center;
+color:white;
+
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
+
+border:1px solid rgba(255,255,255,0.3);
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+.contact-box h2{
+margin-bottom:15px;
+font-size:28px;
+}
+
+.contact-box p{
+font-size:18px;
+margin:10px 0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="hero">
+<div class="overlay"></div>
+
+<div class="content">
+
+<div class="contact-box">
+
+<h2 id="title"></h2>
+
+<p id="college"></p>
+
+<p id="address"></p>
+
+<p id="student1"></p>
+
+<p id="student2"></p>
+
+<p id="faculty"></p>
+
+</div>
+
+<br>
+
+<button id="backBtn" class="back-btn" onclick="goBack()">Back</button>
+
+</div>
+</div>
+
+<script>
+
+let lang = localStorage.getItem("lang") || "english";
+
+window.onload=function(){
+
+const title=document.getElementById("title");
+const college=document.getElementById("college");
+const address=document.getElementById("address");
+
+const s1=document.getElementById("student1");
+const s2=document.getElementById("student2");
+
+const faculty=document.getElementById("faculty");
+const back=document.getElementById("backBtn");
+
+if(lang==="marathi"){
+
+title.innerText="संपर्क करा";
+
+college.innerText="आर.सी. पटेल इन्स्टिट्यूट ऑफ टेक्नॉलॉजी";
+
+address.innerText="शिरपूर, महाराष्ट्र";
+
+s1.innerText="कर्णधार: कुलदीप सोनवणे : +91 95293 07054";
+
+s2.innerText="कर्णधार : चिराग जाधव : +91 85307 98589";
+
+faculty.innerText="फॅकल्टी समन्वयक: प्रा. बी. वाय. पाटील : +91 94047 40469";
+
+back.innerText="मागे जा";
+
+}
+
+else if(lang==="hindi"){
+
+title.innerText="संपर्क करें";
+
+college.innerText="आर.सी. पटेल इंस्टिट्यूट ऑफ टेक्नोलॉजी";
+
+address.innerText="शिरपुर, महाराष्ट्र";
+
+s1.innerText="कप्तान: कुलदीप सोनवणे : +91 95293 07054";
+
+s2.innerText="उप-कप्तान: चिराग जाधव : +91 85307 98589";
+
+faculty.innerText="फैकल्टी समन्वयक: प्रो. बी. वाय. पाटिल : +91 94047 40469";
+
+back.innerText="वापस जाएँ";
+
+}
+
+else{
+
+title.innerText="Contact Us";
+
+college.innerText="R.C. Patel Institute of Technology";
+
+address.innerText="Shirpur, Maharashtra";
+
+s1.innerText="Captain: Kuldip Sonawane : +91 95293 07054";
+
+s2.innerText="Vice Captain: Chirag Jadhav : +91 85307 98589";
+
+faculty.innerText="Faculty Coordinator: Prof. B.Y Patil : +91 94047 40469";
+
+back.innerText="Back";
+
+}
+
+}
+
+function goBack(){
+
+window.location.href="menu.html";
+
+}
+
+</script>
+
+</body>
+</html>

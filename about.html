@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Our Machine</title>
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.info-box{
+display:none;
+margin-top:25px;
+padding:30px;
+border-radius:20px;
+max-width:750px;
+margin:auto;
+color:white;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,0.3);
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="hero">
+<div class="overlay"></div>
+
+<div class="content">
+
+<h1 id="title">About Our Machine</h1>
+
+<div class="menu-buttons">
+
+<button id="btnIntro" onclick="showIntro()">Machine Introduction</button>
+
+<button id="btnFeatures" onclick="showFeatures()">Machine Features</button>
+
+<button id="btnWorks" onclick="showWorks()">How It Works</button>
+
+<button id="btnBenefits" onclick="showBenefits()">Benefits For Farmers</button>
+
+</div>
+
+<div class="info-box" id="infoBox">
+
+<h2 id="infoTitle"></h2>
+
+<p id="infoText"></p>
+
+</div>
+
+<br>
+
+<button class="back-btn" onclick="goBack()" id="mainBack">Back</button>
+
+</div>
+</div>
+
+<script>
+
+let lang = localStorage.getItem("lang") || "english";
+
+window.onload=function(){
+
+const title=document.getElementById("title");
+
+const intro=document.getElementById("btnIntro");
+const features=document.getElementById("btnFeatures");
+const works=document.getElementById("btnWorks");
+const benefits=document.getElementById("btnBenefits");
+
+const back=document.getElementById("mainBack");
+
+if(lang==="marathi"){
+
+title.innerText="मशीन बद्दल";
+
+intro.innerText="मशीन परिचय";
+features.innerText="मशीन वैशिष्ट्ये";
+works.innerText="मशीन कशी काम करते";
+benefits.innerText="शेतकऱ्यांसाठी फायदे";
+
+back.innerText="मेनू वर जा";
+
+}
+
+else if(lang==="hindi"){
+
+title.innerText="मशीन के बारे में";
+
+intro.innerText="मशीन परिचय";
+features.innerText="मशीन की विशेषताएँ";
+works.innerText="मशीन कैसे काम करती है";
+benefits.innerText="किसानों के लिए लाभ";
+
+back.innerText="मेनू पर जाएँ";
+
+}
+
+}
+
+
+
+function showIntro(){
+
+document.getElementById("infoBox").style.display="block";
+
+if(lang==="marathi"){
+
+document.getElementById("infoTitle").innerText="मशीन परिचय";
+
+document.getElementById("infoText").innerText=
+"ही मशीन भाज्यांची लागवड स्वयंचलितपणे करण्यासाठी तयार केलेली मल्टी व्हेजिटेबल ट्रान्सप्लांटर मशीन आहे.";
+
+}
+
+else if(lang==="hindi"){
+
+document.getElementById("infoTitle").innerText="मशीन परिचय";
+
+document.getElementById("infoText").innerText=
+"यह मशीन सब्जियों की रोपाई को स्वचालित बनाने के लिए बनाई गई मल्टी वेजिटेबल ट्रांसप्लांटर मशीन है।";
+
+}
+
+else{
+
+document.getElementById("infoTitle").innerText="Machine Introduction";
+
+document.getElementById("infoText").innerText=
+"Our machine is a multi-vegetable transplanter designed to automate vegetable plantation.";
+
+}
+
+}
+
+
+
+function showFeatures(){
+
+document.getElementById("infoBox").style.display="block";
+
+if(lang==="marathi"){
+
+document.getElementById("infoTitle").innerText="मशीन वैशिष्ट्ये";
+
+document.getElementById("infoText").innerText=
+"ही मशीन टोमॅटो, वांगी यांसारख्या अनेक पिकांची लागवड करू शकते आणि रोबोटिक पिक-अँड-प्लेस प्रणाली वापरते.";
+
+}
+
+else if(lang==="hindi"){
+
+document.getElementById("infoTitle").innerText="मशीन की विशेषताएँ";
+
+document.getElementById("infoText").innerText=
+"यह मशीन टमाटर, बैंगन जैसे कई फसलों की रोपाई कर सकती है और रोबोटिक पिक एंड प्लेस प्रणाली का उपयोग करती है।";
+
+}
+
+else{
+
+document.getElementById("infoTitle").innerText="Machine Features";
+
+document.getElementById("infoText").innerText=
+"Multi crop transplanting, robotic pick and place arm, automated conveyor system and electronic control.";
+
+}
+
+}
+
+
+
+function showWorks(){
+
+document.getElementById("infoBox").style.display="block";
+
+if(lang==="marathi"){
+
+document.getElementById("infoTitle").innerText="मशीन कशी काम करते";
+
+document.getElementById("infoText").innerText=
+"ट्रे कन्व्हेयर रोपे पुढे आणतो, रोबोटिक आर्म रोपे उचलतो आणि तयार केलेल्या खड्ड्यांमध्ये टाकतो.";
+
+}
+
+else if(lang==="hindi"){
+
+document.getElementById("infoTitle").innerText="मशीन कैसे काम करती है";
+
+document.getElementById("infoText").innerText=
+"कन्वेयर ट्रे पौधों को आगे लाता है और रोबोटिक आर्म उन्हें मिट्टी के गड्ढों में डालता है।";
+
+}
+
+else{
+
+document.getElementById("infoTitle").innerText="How It Works";
+
+document.getElementById("infoText").innerText=
+"The conveyor moves trays, robotic arm picks saplings and drops them into soil holes.";
+
+}
+
+}
+
+
+
+function showBenefits(){
+
+document.getElementById("infoBox").style.display="block";
+
+if(lang==="marathi"){
+
+document.getElementById("infoTitle").innerText="शेतकऱ्यांसाठी फायदे";
+
+document.getElementById("infoText").innerText=
+"ही मशीन मजुरी कमी करते, लागवडीचा वेग वाढवते आणि शेतीची उत्पादकता वाढवते.";
+
+}
+
+else if(lang==="hindi"){
+
+document.getElementById("infoTitle").innerText="किसानों के लिए लाभ";
+
+document.getElementById("infoText").innerText=
+"यह मशीन श्रम कम करती है, रोपाई की गति बढ़ाती है और खेती की उत्पादकता बढ़ाती है।";
+
+}
+
+else{
+
+document.getElementById("infoTitle").innerText="Benefits For Farmers";
+
+document.getElementById("infoText").innerText=
+"Reduces labour requirement, increases planting speed and improves productivity.";
+
+}
+
+}
+
+
+
+function goBack(){
+
+window.location.href="menu.html";
+
+}
+
+</script>
+
+</body>
+</html>
